@@ -82,3 +82,5 @@ removeComment("p3","c7")
 addComment("p4","BlaBla")
 addComment("p3","Bl")
 console.log(getPosts())
+
+///Starting Tweeter Render Module
