@@ -18,7 +18,16 @@ console.log(tweater.getPosts())
  const renderer = Renderer()
 
  renderer.renderPosts(tweeter.getPosts())
-// tweeter.addPost("Hello")
-// tweeter.addComment("p3", "New Comment in p3")
-// tweeter.removeComment("p3","c7")
-// renderer.renderPosts(tweeter.getPosts())
+
+const post =function(){ 
+    tweeter.addPost($("#input").val())
+    $("#input").val("")
+    renderer.renderPosts(tweeter.getPosts())
+}
+$("#posts").on("click",".newcomment", function () {
+    let newcomment =$(this).closest(".post").find("input")
+    let postid= $(this).closest(".post").data().id
+    tweeter.addComment(postid ,newcomment.val())
+    newcomment.val("")
+    renderer.renderPosts(tweeter.getPosts())    
+})
