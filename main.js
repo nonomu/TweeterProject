@@ -1,19 +1,4 @@
-/*
 
-const tweater = Tweeter()
-let text="Hello EveryBody"
-console.log(tweater.getPosts())
-tweater.addPost(text)
-tweater.addComment("p3", "New Comment in p3")
-tweater.addComment("p3", "New Comment in p3")
-tweater.removePost("p1")
-tweater.addPost(text)
-console.log(tweater.getPosts())
-tweater.removeComment("p3","c7")
-tweater.addComment("p4","BlaBla")
-tweater.addComment("p3","Bl")
-console.log(tweater.getPosts())
-*/
  const tweeter = Tweeter()
  const renderer = Renderer()
 
@@ -30,4 +15,16 @@ $("#posts").on("click",".newcomment", function () {
     tweeter.addComment(postid ,newcomment.val())
     newcomment.val("")
     renderer.renderPosts(tweeter.getPosts())    
+})
+
+$("#posts").on("click",".delete-comment",function () {
+    let postid= $(this).closest(".post").data().id
+    let commentid= $(this).closest(".comments").data().id
+    tweeter.removeComment(postid,commentid)
+    renderer.renderPosts(tweeter.getPosts())  
+})
+$("#posts").on("click",".delete",function () {
+    let removeid= $(this).closest(".post").data().id
+    tweeter.removePost(removeid)
+    renderer.renderPosts(tweeter.getPosts())
 })
